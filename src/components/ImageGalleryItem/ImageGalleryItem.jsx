@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { GalleryItem } from './ImageGalleryItemStyled';
 import Modal from 'components/Modal/Modal';
-import { ModalOverlay } from 'components/Modal/ModalStiled';
+import { ModalOverlay } from 'components/Modal/ModalStyled';
 
 export class ImageGalleryItem extends Component {
   state = {

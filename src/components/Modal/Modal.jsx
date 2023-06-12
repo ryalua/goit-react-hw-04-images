@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ModalOverlay } from './ModalStiled';
+import { ModalOverlay } from './ModalStyled';
 
 export class Modal extends Component {
   render() {

@@ -1,24 +1,20 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
 
-export class App extends Component {
-  state = {
-    keyWord: '',
+export function App() {
+  const [keyWord, setKeyWord] = useState('');
+
+  const handleKeyWord = keyWord => {
+    setKeyWord(keyWord);
   };
 
-  handleKeyWord = keyWord => {
-    this.setState({ keyWord });
-  };
-
-  render() {
-    return (
-      <div>
-        <Searchbar onKeyWord={this.handleKeyWord} />
-        <ImageGallery keyWord={this.state.keyWord} />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Searchbar onKeyWord={handleKeyWord} />
+      <ImageGallery keyWord={keyWord} />
+    </div>
+  );
 }
 
 export default App;
