@@ -10,8 +10,8 @@ import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import { Loader } from 'components/Loader/Loader';
 // import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
-export function ImageGallery(props) {
-  const [keyWord, setKeyWord] = useState('');
+export function ImageGallery(props, keyWord) {
+  // const [keyWord, setKeyWord] = useState('');
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
