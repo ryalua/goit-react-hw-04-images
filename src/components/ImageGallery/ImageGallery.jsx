@@ -10,19 +10,18 @@ import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import { Loader } from 'components/Loader/Loader';
 // import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
-export function ImageGallery(props, keyWord) {
-  // const [keyWord, setKeyWord] = useState('');
+export function ImageGallery(props) {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
-    if (props.keyWord !== keyWord) {
+    if (props.keyWord !== '') {
       pixabayApi(props.keyWord, props.page)
         .then(response => response)
         .then(photos => setPhotos(photos.hits));
     }
-  }, [props.page, props.keyWord, keyWord]);
+  }, [props.page, props.keyWord]);
 
   const handleLoadMore = () => {
     const nextPage = page + 1;
@@ -31,7 +30,7 @@ export function ImageGallery(props, keyWord) {
       .then(photos => {
         setPhotos(prevPhotos => [...prevPhotos, ...photos.hits]);
         setPage(nextPage);
-        // setLoading(false);
+        setLoading(false);
       })
       .catch(error => {
         console.log('Error');

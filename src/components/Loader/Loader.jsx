@@ -3,10 +3,10 @@ import React from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 
 export function Loader({ onSpinner }) {
-  const { loading } = onSpinner;
+  // const { loading } = onSpinner;
 
   return (
-    loading && (
+    onSpinner && (
       <div>
         <ThreeDots
           height={80}
