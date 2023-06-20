@@ -5,10 +5,9 @@ import pixabayApi from 'components/servises/pixabayApi';
 import Button from 'components/Button/Button';
 import { Gallery } from './ImageGalleryStyled';
 // import 'react-toastify/dist/ReactToastify.css';
-// import { Loader } from 'components/Loader/Loader';
-import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+
 import { Loader } from 'components/Loader/Loader';
-// import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
+import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
 export function ImageGallery(props) {
   const [page, setPage] = useState(1);

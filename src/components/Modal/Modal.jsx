@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
 import { ModalOverlay } from './ModalStyled';
 
-export class Modal extends Component {
-  render() {
-    return (
-      <ModalOverlay>
-        <div className="modal">{this.props.children}</div>
-      </ModalOverlay>
-    );
-  }
-}
+import React from 'react';
 
-export default Modal;
+export function Modal({ children }) {
+  return (
+    <div>
+      return (
+      <ModalOverlay>
+        <div className="modal">{children}</div>
+      </ModalOverlay>
+      );
+    </div>
+  );
+}
