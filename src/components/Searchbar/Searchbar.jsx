@@ -1,69 +1,62 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 
 // import PropTypes from 'prop-typs';
 import { SearchHeader, SearchForm } from 'components/Searchbar/SearchbarStyled';
 import 'react-toastify/dist/ReactToastify.css';
 
-export class Searchbar extends Component {
-  state = {
-    keyWord: '',
-    page: 1,
+const toastConfig = {
+  position: 'top-right',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: 'light',
+};
+
+export function Searchbar({ onKeyWord }) {
+  const [keyWord, setKeyWord] = useState('');
+
+  const handelInput = ({ target }) => {
+    setKeyWord(target.value);
   };
 
-  handelInput = ({ target }) => {
-    this.setState({
-      keyWord: target.value,
-    });
-  };
-
-  handleSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
 
     // Проверка: Пустой ли массив при запросе?
-    if (this.state.keyWord === '') {
+    if (keyWord === '') {
       toast.warn(
         'Sorry, there are no images matching your search query. Please try again.',
-        {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        }
+        toastConfig
       );
       return;
     }
-    this.props.onKeyWord(this.state.keyWord);
+    onKeyWord(keyWord);
   };
 
-  render() {
-    return (
-      <>
-        <SearchHeader>
-          <SearchForm onSubmit={this.handleSubmit}>
-            <button type="submit" className="button">
-              <span className="button-label">Search</span>
-            </button>
+  return (
+    <>
+      <SearchHeader>
+        <SearchForm onSubmit={handleSubmit}>
+          <button type="submit" className="button">
+            <span className="button-label">Search</span>
+          </button>
 
-            <input
-              className="input"
-              type="text"
-              autoComplete="off"
-              autoFocus
-              placeholder="Search images and photos"
-              onChange={this.handelInput}
-              value={this.state.keyWord}
-            />
-          </SearchForm>
-        </SearchHeader>
-        <ToastContainer />
-      </>
-    );
-  }
+          <input
+            className="input"
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+            onChange={handelInput}
+            value={keyWord}
+          />
+        </SearchForm>
+      </SearchHeader>
+      <ToastContainer />
+    </>
+  );
 }
-
-export default Searchbar;
